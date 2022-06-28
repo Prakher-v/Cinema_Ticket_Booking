@@ -20,7 +20,7 @@ void main()
 	 int ch;
  	do{
 	printf("\n");	
-	printf("\t Moive Ticket booking ");
+	printf("\t Cinema Ticket booking ");
 	printf("\n");
 	printf("\nPress <1> Insert Movie");
    	printf("\nPress <2> View All Movie");
