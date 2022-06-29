@@ -8,7 +8,7 @@ struct book
 	char date[20];
 	int cost;
 }b;
-int seat = 60 ;
+int seat = 100 ;
 void insert_details();
 void viewAll(); 
 void find();
@@ -81,7 +81,7 @@ void insert_details()
 	}
 	else
 	{
-		fprintf(fp,"%s\n %s\n %s\n %d \n",b.code,b.name,b.date,b.cost);
+		fprintf(fp,"%s\n %s\n %s\n %d \n",b.code,b.name,b.date,b.cost); //this line print the given variable value from the file.
 		printf("Data insert Sucessfull");
 	}
 		printf("\n");
@@ -103,7 +103,7 @@ void find()
 	}
 	else
 	{	
-		while(getc(fp) != EOF)
+		while(getc(fp) != EOF) // EOF stands for End of the file.
 		{
 			fscanf(fp,"%s\n %s\n %s\n %d\n",b.code,b.name,b.date,&b.cost);
 			if(strcmp(b.code,ch) == 0)
@@ -118,14 +118,14 @@ void find()
 		}
 	}
 
-	fclose(fp);
+	fclose(fp);//this is used to close the current file.
 }
 void viewAll()
 {
 	char ch;
 	FILE *fp;
 
-	fp = fopen("data.txt","r");
+	fp = fopen("data.txt","r"); // this line is use to open the avila. file and read the old data.
 	if(fp == NULL)
 	{
 		printf("file does not found !");
@@ -133,17 +133,17 @@ void viewAll()
 	}
 	else
 	{	
-		system("cls");
+		system("cls"); // this line is used to clear the above output in the terminal.
 		while( ( ch = fgetc(fp) ) != EOF )
       		printf("%c",ch);		
 	}
-	fclose(fp);
+	fclose(fp); //to close the file(fclose)
 }
 void book_ticket()
 {
  struct book b;
-	FILE *fp;
-	FILE *ufp;
+	FILE *fp; //fp is a pointer use to store the address.
+	FILE *ufp; //ufp is a pointer use to located the end of the line.
 	int total_seat,total_amount;
 	long long int mobile;
 	char name[20];
@@ -165,7 +165,7 @@ void book_ticket()
 	printf("\n For Book ticket Choise Movie(Enter Movie Code First Latter Of Movie)\n");
 	printf("\n Enter movie code :");
 	scanf("%s",movie_code);
-	fp = fopen("data.txt","r");
+	fp = fopen("data.txt","r"); // open the file(fopen) and for read the file we use ("r")
 	if(fp == NULL)
 	{
 		printf("file does not found !");
@@ -176,7 +176,7 @@ void book_ticket()
 		while(getc(fp) != EOF)
 		{
 			fscanf(fp,"%s\n %s\n %s\n %d\n",b.code,b.name,b.date,&b.cost);
-			if(strcmp(b.code,movie_code) == 0)
+			if(strcmp(b.code,movie_code) == 0) //this (strcmp) is used to compair the two given string with eaach other.
 			{
 				printf("\n Record Found\n");
 				printf("\n\t\tCode :: #%s",b.code);
@@ -200,7 +200,7 @@ void book_ticket()
 	printf("\n\t\tTotal seats : %d",total_seat);
 	printf("\n\t\tcost per ticket : Rs.%d",b.cost);
 	printf("\n\t\tTotal Amount : Rs.%d",total_amount);
-	ufp=fopen("oldTransection.txt","a");
+	ufp=fopen("oldTransection.txt","a"); // append the data in the already given file.("a")
 	if(ufp == NULL)
 	{
 		printf("FIle not Found");
